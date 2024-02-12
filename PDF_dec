@@ -1,10 +1,27 @@
 #!/bin/bash
 
+# SPDX-FileCopyrightText:2024 hirofumi Murai <murai_h22aa@icloud.com>
+# SPDX-License-Identify: MIT
+
+
 DIR1=$(echo $0|rev|sed "s;/; /;"| awk '{print $2}'| rev)
 DIR2=$(echo $0|sed "s;.*/;;"| sed "s;\..*;;" | sed "s;$;/;"| sed "s;^;_;")
+
+while getopts ":h" OPTION
+do
+	case $OPTION in
+		h ) OPTION_h="TRUE";;
+	esac
+done
+
+if [ "$OPTION_h" = "TRUE" ];then
+	cat "${DIR1}${DIR2}"help
+else
+
 
 cat ${DIR1}$DIR2/conf |
 	while read f ;do
 		#qpdf --decrypt --password=$f $1 $(echo $1| sed "s;en;de;") 2>/dev/null
 		qpdf --decrypt --password=$f $1 $(echo $1| sed "s;encrypted;【$f】;") 2>/dev/null
 	done 
+fi
