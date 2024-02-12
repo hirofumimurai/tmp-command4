@@ -1,0 +1,9 @@
+#!/bin/bash
+
+
+DIR1=$(echo $0|rev|sed "s;/; /;"| awk '{print $2}'| rev)
+DIR2=$(echo $0|sed "s;.*/;;"| sed "s;\..*;;" | sed "s;$;/;"| sed "s;^;_;")
+
+PASS=$(cat $DIR1$DIR2/conf | shuf -n1)
+
+qpdf --encrypt "$PASS" "$PASS" 40 -- $1 ./$(echo $1| sed "s;.*/;;" |sed "s;.pdf;_encrypted.pdf;")

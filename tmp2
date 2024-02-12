@@ -1,0 +1,10 @@
+#!/bin/bash
+
+DIR1=$(echo $0|rev|sed "s;/; /;"| awk '{print $2}'| rev)
+DIR2=$(echo $0|sed "s;.*/;;"| sed "s;\..*;;" | sed "s;$;/;"| sed "s;^;_;")
+
+cat ${DIR1}$DIR2/conf |
+	while read f ;do
+		#qpdf --decrypt --password=$f $1 $(echo $1| sed "s;en;de;") 2>/dev/null
+		qpdf --decrypt --password=$f $1 $(echo $1| sed "s;encrypted;【$f】;") 2>/dev/null
+	done 
