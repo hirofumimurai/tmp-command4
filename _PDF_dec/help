@@ -1,9 +1,0 @@
-
-Usage: PDF_dec [INPUT_encrypted.pdf]
-Decrypt [INPUT_decrypted.pdf] file
-
-Example
-$ PDF_dec INPUT_encrypted.pdf
-$ ls 
- INPUT_decrypted.pdf INPUT_encrypted.pdf
-

@@ -1,9 +1,0 @@
-
-Usage: PDF_enc [INPUT.pdf]
-Encrypt [INPUT.pdf] file
-
-Example
-$ PDF_enc INPUT.pdf
-$ ls 
- INPUT.pdf INPUT_encrypted.pdf
-
