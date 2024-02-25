@@ -3,7 +3,6 @@
 
 dir=$(echo $0| sed "s;./;_;" | sed "s;.bash;;")
 
-echo $dir
 
 OPTIONh=""
 while getopts h OPTION
@@ -19,13 +18,12 @@ cat "$dir"/help
 
 else
 
-ARGV1=$(echo $1)
-ARGV2=$(echo $2)
+ARGV1=$1
+ARGV2=$2
 
 burstexcel()
 {
 
-echo $dir
 
 python3 $dir/code.py $ARGV1 $ARGV2
 
