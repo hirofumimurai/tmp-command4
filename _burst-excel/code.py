@@ -21,7 +21,7 @@ def delete_rows_except_value(file_path, column_value):
         ws_master.delete_rows(row[0].row)
 
     # 変更を保存
-    wb_master.save("updated_master.xlsx")
+    wb_master.save("tmp-out.xlsx")
 
 if __name__ == "__main__":
     # 引数の取得
