@@ -1,7 +1,38 @@
-#!/bin/bash
+#!/bin/bash -eux
+
 
 dir=$(echo $0| sed "s;./;_;" | sed "s;.bash;;")
 
-python3 $dir/code.py $1 $2
+echo $dir
 
-mv tmp-out.xlsx $(echo $1 | sed "s;.xlsx;;")_$2.xlsx
+OPTIONh=""
+while getopts h OPTION
+do
+case $OPTION in
+h) OPTIONh="TRUE" ;;
+esac
+done
+
+
+if [ "$OPTIONh" = "TRUE" ];then
+cat "$dir"/help
+
+else
+
+ARGV1=$(echo $1)
+ARGV2=$(echo $2)
+
+burstexcel()
+{
+
+echo $dir
+
+python3 $dir/code.py $ARGV1 $ARGV2
+
+mv tmp-out.xlsx $(echo $ARGV1 | sed "s;.xlsx;;")_$ARGV2.xlsx
+}
+
+burstexcel
+
+fi
+

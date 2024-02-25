@@ -1,0 +1,5 @@
+Usage: burst-excel [excel-file] [key]
+leave only the lines you need.leaves only the rows where the string specified in the second argument is in column A.
+
+Example:
+ burst-excel master.xlsx 北見
